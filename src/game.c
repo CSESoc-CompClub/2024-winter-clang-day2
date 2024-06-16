@@ -4,12 +4,17 @@
 #include "game.h"
 
 
-// builds the player struct with user input
-Player build_player() {
+Player init_player() {
+  // TODO: implement this
   Player player;
-  // TODO: build the player
   return player;
 }
+
+Enemy* init_enemies() {
+  // TODO: implement this
+  Enemy* enemies = NULL;
+  return enemies;
+};
 
 // UTILITY FUNCTION
 void slow_print(char *str) {

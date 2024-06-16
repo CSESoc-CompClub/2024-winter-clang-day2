@@ -2,14 +2,20 @@
 #define GAME
 
 typedef struct player {
-  int age;
-  int height;
-  char name[];
-  // TODO: add the rest
+  int attack;
+  int defence;
+  int health;
 } Player;
 
+typedef struct enemy {
+  int attack;
+  int defence;
+  int health;
+} Enemy;
+
 // game functions
-Player build_player();
+Player init_player();
+Enemy* init_enemies();
 // TODO: add the rest of the game functions
 
 // utility
