@@ -13,12 +13,12 @@ typedef struct enemy {
   int health;
 } Enemy;
 
-// game functions
+// GAME FUNCTIONS ===================== 
 Player init_player();
 Enemy* init_enemies();
 // TODO: add the rest of the game functions
 
-// utility
+// UTILITY FUNCTIONS ================== 
 void slow_print(char str[]);
 
 #endif // !GAME
