@@ -4,10 +4,9 @@
 
 // Entry point
 int main(void) {
-  // Intro message
   slow_print("Welcome to pokemon (or something like that)\n");
   Player player = init_player();
-  Enemy* enemy = init_enemies();
-  // TODO: fill in based on the spec
+  Enemy* enemies = init_enemies();
+  play(player, enemies);
 }
 
