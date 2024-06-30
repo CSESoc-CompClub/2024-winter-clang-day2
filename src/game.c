@@ -107,6 +107,7 @@ void battle_stats(Player player, int battle_number) {
   scanf("%c", &stat);
   while (stat != 'h' && stat != 'a' && stat != 'd') {
     slow_print("\nPlease select a correct option: ");
+    scanf("%c", &stat);
   }
 
   if (stat == 'h') {
