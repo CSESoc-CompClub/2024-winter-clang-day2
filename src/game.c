@@ -8,11 +8,28 @@
 int ENEMIES = 5;
 int ENEMY_HEALTH_MIN = 5;
 int ENEMY_HEALTH_MAX = 9;
+int STAT_INCREASE = 5;
 
 // GAME FUNCTIONS =====================
 Player init_player() {
   Player player;
   // TODO: use scanf to find input player stats
+
+  slow_print("Enter your attack strength: ");
+  scanf("%d", &player.attack);
+
+  slow_print("Enter your defence strength: ");
+  scanf("%d", &player.defence);
+  
+  int health;
+  slow_print("Enter your starting health (max 10): ");
+  scanf("%d", &health);
+
+  while (health > 10 || health < 0) {
+    slow_print("Please enter a positive number up to 10: ");
+    scanf("%d", &health);
+  }
+  player.health = health;
   return player;
 }
 
@@ -75,6 +92,32 @@ void print_battle(Player player, Enemy enemy) {
 // Here are your current stats:
 // PLAYER STATS
 // Increase??
+
+void battle_stats(Player player, int battle_number) {
+  char battle_stats[1024], player_stats[1024];
+  sprintf(battle_stats, "Battle #%d\n", battle_number);
+  sprintf(player_stats, "Attack: %d\n Defence: %d\n Health: %d\n", player.attack, player.defence, player.health);
+  
+  slow_print(battle_stats);
+  slow_print("Here are your current stats: \n");
+  slow_print(player_stats);
+  slow_print("What would you like to do? Heal (h), Increase Attack (a) or Increase Defence (d): ");
+  
+  char stat;
+  scanf("%c", &stat);
+  while (stat != 'h' && stat != 'a' && stat != 'd') {
+    slow_print("\nPlease select a correct option: ");
+    scanf("%c", &stat);
+  }
+
+  if (stat == 'h') {
+    player.health += STAT_INCREASE;
+  } else if (stat == 'a') {
+    player.attack += STAT_INCREASE;
+  } else {
+    player.defence += STAT_INCREASE;
+  }
+}
 
 // and
 
