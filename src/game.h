@@ -16,7 +16,7 @@ typedef struct enemy {
 Player init_player();
 Enemy *init_enemies();
 void play(Player, Enemy *);
-// TODO: add the rest of the game functions
+int get_enemy_attack();
 
 // UTILITY FUNCTIONS ==================
 void slow_print(char str[]);
