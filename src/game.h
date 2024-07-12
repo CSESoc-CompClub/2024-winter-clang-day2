@@ -1,3 +1,8 @@
+// [GAME.H]
+// Header file for game.
+
+// ============================================================================
+
 #ifndef GAME
 #define GAME
 
@@ -9,16 +14,17 @@ typedef struct player {
 } Player;
 
 typedef struct enemy {
+  int level;
   int health;
 } Enemy;
 
-// GAME FUNCTIONS =====================
+// GAME FUNCTIONS =============================================================
 Player init_player();
 Enemy *init_enemies();
 void play(Player, Enemy *);
-int get_enemy_attack();
+int get_enemy_attack(int level);
 
-// UTILITY FUNCTIONS ==================
+// UTILITY FUNCTIONS ==========================================================
 void slow_print(char str[]);
 void slow_print_2(char str[], size_t speed);
 void print_battle(Player player, Enemy enemy);
