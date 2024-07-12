@@ -30,60 +30,32 @@ void play(Player player, Enemy *enemies) {
   for (int i = 0; i < ENEMIES; i++) {
     Enemy enemy = enemies[i];
 
-    // Battle Stats
     printf("\n\n\033[0;33m· · ────── Battle #%d ────── · ·\e[0m\n\n", i + 1);
     slow_print("\033[1m> Here are your current stats: \e[0m\n");
-    printf("\tAttack: %d\n\tDefence: %d\n\tHealth: %d\n\n", player.attack,
-           player.defence, player.health);
+    // [1] TODO: Print out the player's stats
 
-    // Increase Stats
     slow_print("\033[2mWhat would you like to do? Heal (h), Increase Attack (a) or "
                "Increase Defence (d)\e[0m");
+    // [2] TODO: Ask the player for their input, and 
+    // then increase the corresponding stat
 
-    char stat;
-    scanf("%c", &stat);
-    while (stat != 'h' && stat != 'a' && stat != 'd') {
-      slow_print("\n\033[1m> Pick your move: \e[0m");
-      scanf(" %c", &stat);
-    }
-
-    if (stat == 'h') {
-      player.health += STAT_INCREASE;
-    } else if (stat == 'a') {
-      player.attack += STAT_INCREASE / 2;
-    } else {
-      player.defence += STAT_INCREASE / 2;
-    }
-
-    // Print Battle
     while (enemy.health > 0 && player.health > 0) {
       printf("\n\n");
       print_battle(player, enemy);
 
-      // Player attacks enemy
-      printf("You attack the enemy and deal %d damage\n", player.attack);
-      enemy.health -= player.attack;
-      printf("The enemy has %d health\n", enemy.health);
-      if (enemy.health <= 0) {
-        printf("\033[1;32mYou have killed enemy %d!\e[0m\n", i);
-        continue;
-      }
+      // [3] TODO: Attack the enemy by reducing it's health by the player's attack,
+      // You might find these formatted print statements useful:
+      //  -> "The enemy has <NUMBER> health\n"
+      //  -> "\033[1;32mYou have killed enemy <ENEMY NUM>!\e[0m\n",
 
       // Enemy attacks player
-      int enemy_attack = get_enemy_attack(enemy.level);
-      int damage = enemy_attack - player.defence;
-      if (damage < 0) {
-        // Cannot deal less than 0 damage
-        damage = 0;
-      }
+      // [4] TODO: The enemy attacks the player by reducing the player's health,
+      //  BUT! the enemy's attack is lowered by the player's defence!
+      //  -> "The enemy attacks you and deals <NUMBER> damage\n"
+      //  -> "You now have <NUMBER> health\n"
+      //  -> slow_print("\n\033[1;31mYOU DIED :(\e[0m");
 
-      printf("The enemy attacks you and deals %d damage\n", damage);
-      player.health -= damage;
-      printf("You now have %d health\n", player.health);
-      if (player.health <= 0) {
-        slow_print("\n\033[1;31mYOU DIED :(\e[0m");
-        return;
-      }
+      break; // [5] TODO: remove me when your initial battle loop works!
     }
   }
   slow_print("\n\033[1;33mENEMIES SLAIN !!\e[0m");
